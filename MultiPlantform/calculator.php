@@ -1,14 +1,21 @@
 <?php
 
-Logger::log('Start');
+class Calculator
+{
 
-$param1 = (int)(isset($_POST['param1']) ? $_POST['param1'] : $_GET['param1']);
-$param2 = (int)(isset($_POST['param2']) ? $_POST['param2'] : $_GET['param2']);
-Logger::log('Got params: %s and %s', [$param1, $param2]);
+    /**
+     * @param int|float $param1
+     * @param int|float $param2
+     *
+     * @return int|float
+     */
+    public function sum($param1, $param2) {
+        Logger::log('Start calc. Expression: %s + %s', [$param1, $param2]);
 
-$calculator = new Calculator();
-$result = $calculator->sum($param1, $param2);
+        $result = $param1 + $param2;
 
-echo '<div><b>Program "Calculator"</b><br><br>' . $param1 . ' + ' . $param2 . ' = <b>' . $result . '</b></div>';
+        Logger::log('Finish calc. Result: %s', $result);
+        return $result;
+    }
 
-Logger::log('Finish');
+}
